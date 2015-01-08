@@ -1,0 +1,24 @@
+#menu{
+ padding: 25px;
+}
+
+#view{
+  width: 85%;
+  height: 85%;
+}
+
+#grid_table {
+    margin: 0px auto;
+    width: auto;
+    border-collapse: collapse;
+}
+
+#grid_table .cell {
+    width: 15px;
+    height: 15px;
+    border: 1.5px solid #eee;
+}
+
+.alive {
+    background: steelblue;
+}
