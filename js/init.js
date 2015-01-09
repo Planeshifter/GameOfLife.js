@@ -47,11 +47,6 @@ function View(grid){
      self.table.addClass("grid_table");
           var x, y, tr, td, cell;
           allCells = [];
-          var toggleCell = function (cell) {
-              return function (e) {
-                  cell.alive = !cell.alive;
-              };
-          };
 
           for (y = 0; y < grid.height; y++) {
               tr = $('<tr>');

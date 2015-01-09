@@ -24,25 +24,26 @@
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon">Width</div>
-              <input id="input_width" type="number" class="form-control" min="0" max="100" placeholder="W">
+              <input id="input_width" type="number" class="form-control" min="0" max="100" value="25">
             </div>
             <div class="input-group">
               <div class="input-group-addon">Height</div>
-              <input id="input_height" type="number" class="form-control" min="0" max="100" placeholder="H">
+              <input id="input_height" type="number" class="form-control" min="0" max="100" value="25">
             </div>
             or
             <input type="file" id="fileInput"  class="form-control" />
           </div>
-          <button id="create_grid_btn" type="button" class="btn btn-default">Create Grid</button>
+          <button id="create_grid_btn" type="button" class="btn btn-primary">Create Grid</button>
         </form>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <div class="input-group">
             <div class="input-group-addon">n</div>
-              <input id="nsteps_input" type="number" class="form-control" min="0" max="1000" placeholder="Steps">
+              <input id="nsteps_input" type="number" class="form-control" min="0" max="1000" value="10">
             </div>
             <div class="input-group">
-              <input id="speed_input" type="number" class="form-control" min="0" max="1000" placeholder="Speed">
+              <div class="input-group-addon">Speed</div>
+              <input id="speed_input" type="number" class="form-control" min="0" max="1000" value="200">
               <div class="input-group-addon">ms</div>
             </div>
           </div>
