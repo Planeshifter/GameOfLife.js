@@ -140,11 +140,37 @@ $(document).ready(function(){
   view.init();
 
   $('#create_grid_btn').click(function(){
+
+    var fileInput = document.getElementById('fileInput');
+    var file = fileInput.files[0];
     var width, height;
-    width = $("#input_width").val();
-    height = $("#input_height").val();
-    grid.resize(width, height);
-    view.init();
+
+    if (!file){
+      width = $("#input_width").val();
+      height = $("#input_height").val();
+      grid.resize(width, height);
+      view.init();
+    } else {
+      var reader = new FileReader();
+      var rows;
+      reader.onload = function (e) {
+        rows = reader.result.split('\n');
+        for(var key in rows){
+          rows[key] = rows[key].split(' ');
+        }
+        width = rows[0].length;
+        height = rows.length - 1;
+        grid.resize(width, height);
+        view.init();
+        grid.traverse(function(cell, x, y){
+          if (rows[y][x] == 1){
+            cell.alive = true;
+          }
+        });
+        view.update();
+      };
+      reader.readAsText(file);
+    }
   });
 
   $('#start_game_btn').click(function(){
@@ -153,4 +179,5 @@ $(document).ready(function(){
     grid.current_step = 0;
     grid.timer = setInterval(grid.step, speed);
   });
+
 });

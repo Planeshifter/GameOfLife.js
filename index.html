@@ -16,24 +16,68 @@
 
 <body>
   <div id="menu" class="row">
-    <h2>Game of Life</h2>
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input id="input_width" type="number" class="form-control" min="0" max="100" placeholder="W">
-        <input id="input_height" type="number" class="form-control" min="0" max="100" placeholder="H">
+    <h1>Game of Life</h1>
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon">Width</div>
+              <input id="input_width" type="number" class="form-control" min="0" max="100" placeholder="W">
+            </div>
+            <div class="input-group">
+              <div class="input-group-addon">Height</div>
+              <input id="input_height" type="number" class="form-control" min="0" max="100" placeholder="H">
+            </div>
+            or
+            <input type="file" id="fileInput"  class="form-control" />
+          </div>
+          <button id="create_grid_btn" type="button" class="btn btn-default">Create Grid</button>
+        </form>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <div class="input-group">
+            <div class="input-group-addon">n</div>
+              <input id="nsteps_input" type="number" class="form-control" min="0" max="1000" placeholder="Steps">
+            </div>
+            <div class="input-group">
+              <input id="speed_input" type="number" class="form-control" min="0" max="1000" placeholder="Speed">
+              <div class="input-group-addon">ms</div>
+            </div>
+          </div>
+          <button id="start_game_btn" type="button" class="btn btn-success">Start</button>
+        </form>
       </div>
-      <button id="create_grid_btn" type="button" class="btn btn-default">Create Grid</button>
-    </form>
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input id="nsteps_input" type="number" class="form-control" min="0" max="1000" placeholder="Steps">
-        <input id="speed_input" type="number" class="form-control" min="0" max="1000" placeholder="Speed">
-      </div>
-      <button id="start_game_btn" type="button" class="btn btn-success">Start</button>
-    </form>
-  </div>
+    </div>
+  </nav>
+</div>
   <div id="view" class="row">
-   <table id="grid_table"></table>
+    <div class="col-md-9">
+      <table id="grid_table"></table>
+    </div>
+    <div class="col-md-3">
+      <div class="well">
+        <h3>Instructions:</h3>
+        <ul>
+          <li>
+            <p><b>Step 1:</b>
+             To set the initial 2d grid, one option is to select its width and height via the respective input forms and then
+             click on cells to toggle between the states alive/dead. A cell is highlighted in blue color to indicate that it is alive.
+            </p>
+            <p>Alternatively, it is possible to upload a *.txt file consisting of 0s and 1s to set the initial grid. The numbers should be separated
+              by spaces. A new line indicates the end of a row in the input matrix. Each line should contain the same amount of numbers.
+            </p>
+          </li>
+          <li>
+            <p><b>Step 2:</b>
+             After setting the number of iterations for which the simulation should run (<i>n</i>) and the speed of the intervals in <i>ms</i>,
+             one should click on the <b>Start</b> button to watch the simulation.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <script src="js/jquery-2.1.3.min.js"></script>
