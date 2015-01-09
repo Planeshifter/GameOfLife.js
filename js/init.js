@@ -1,3 +1,10 @@
+/*
+Class for grid cells.
+Has the following methods:
+  update: updates the status (alive/not alive) of the cells given the current number of living neighbours
+  countLivingNeighbours: calculate the number of currently living neighbours and store the result in the
+  liveNeighbours attribute
+*/
 function Cell(x, y, grid){
   this.x = x;
   this.y = y;
@@ -28,6 +35,9 @@ Cell.prototype.countLivingNeighbours = function(){
   this.liveNeighbours = count;
 };
 
+/*
+View class responsible for visual representation of grid.
+*/
 function View(grid){
   var self = this;
   this.table = $("#grid_table");
@@ -73,6 +83,15 @@ function View(grid){
   };
 }
 
+/*
+grid class; constructor takes width and height as parameters.
+Instances have the following methods:
+  init: initializes the 2d grid matrix of cells
+  resize(gridWidth, gridHeight): resized the grid matrix stored in rows to the new dimensions
+  traverse(callback): apply the supplied callback function to all grid cells. The callback function receives
+  as its first argument the cell, and the x- and y-coordinate as its second and third argument, respectively.
+  step: carries out one step in the simulation of the "Game of Life"
+*/
 function Grid(gridWidth, gridHeight){
     var self = this;
     this.width = gridWidth || 50;
@@ -127,6 +146,10 @@ function Grid(gridWidth, gridHeight){
     };
 }
 
+
+/*
+set up grid and register event handlers
+*/
 $(document).ready(function(){
   var grid = new Grid(25, 25);
   var view = new View(grid);
