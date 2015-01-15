@@ -13,12 +13,8 @@ function Cell(x, y, grid){
   this.liveNeighbours = null;
 }
 
-Cell.prototype.update = function(){
-  if (this.alive === true){
-    this.alive = (this.liveNeighbours === 2 || this.liveNeighbours === 3) ? true : false;
-  } else if (this.liveNeighbours === 3){
-    this.alive = true;
-  }
+Cell.prototype.update = function(callback){
+  this.alive = callback.call(this);
 };
 
 Cell.prototype.countLivingNeighbours = function(){
@@ -136,7 +132,13 @@ function Grid(gridWidth, gridHeight){
           cell.countLivingNeighbours();
         });
         self.traverse(function(cell){
-          cell.update();
+          cell.update(function(){
+            if (this.alive === true){
+              return (this.liveNeighbours === 2 || this.liveNeighbours === 3) ? true : false;
+            } else if (this.liveNeighbours === 3){
+              return true;
+            }
+          });
         });
         self.view.update();
         self.current_step++;
